@@ -42,5 +42,8 @@ def index():
             image_url = filepath
     return render_template('index.html', dimensions=dimensions, image_url=image_url)
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    import os
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
