@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pomegranate Analyzer</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        img { max-width: 300px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h2>Upload Pomegranate Image</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <button type="submit">Upload and Analyze</button>
+    </form>
+
+    {% if image_url %}
+        <h3>Uploaded Image:</h3>
+        <img src="{{ image_url }}" alt="Uploaded Image">
+    {% endif %}
+
+    {% if dimensions %}
+        <h3>Detected Object(s):</h3>
+        <ul>
+        {% for d in dimensions %}
+            <li>Width: {{ d.width }} px, Height: {{ d.height }} px, Circumference: {{ d.circumference }} px</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
